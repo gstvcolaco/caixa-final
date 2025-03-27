@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <!-- or -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn+SC&display=swap" rel="stylesheet">
+
+    <title>Caixa</title>
+    <link rel="stylesheet" href="assets/css/color.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+<navbar>
+    <header>
+        <nav class="nav-bar" id="logo">
+            <div class="nav-logo">
+                <img src="assets/img/caixa.png" id="img-logo-nav">
+                <h1>Caixa</h1>
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a></li>
+                    <li class="nav-item"><a th:href="@{/caixa/novo}" class="nav-link">Inserir <i class='bx bxs-cloud-upload'></i></a></li>
+                </ul>
+            </div>
+            <div class="search-button">
+                <a href="pesquisa.html"><i class='bx bx-search-alt'></i></a>
+            </div>
+
+            <div class="mobile-menu-icon">
+                <button onclick="menuShow()"><i class='bx bx-menu' style='color:#ffffff'  ></i></button>
+            </div>
+        </nav>
+        <div class="mobile-menu">
+            <ul>
+                <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a></li>
+                <li class="nav-item"><a th:href="@{/caixa/novo}" class="nav-link">Inserir <i class='bx bxs-cloud-upload'></i></a></li>
+            </ul>
+            <div class="search-button">
+                <a href="pesquisa.html"><i class='bx bx-search-alt'></i></a>
+            </div>
+        </div>
+    </header>
+</navbar>
+
+<corpo>
+    <div class="container">
+        <div class="extrato">
+            <div id="txtsaldo">
+                <h1>Saldo disponivel:</h1>
+            </div>
+            <div id="saldo"><span>R$</span> XXX,XX</div>
+        </div>
+    </div>
+
+    <div class="table">
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Tipo</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="caixa : ${listacaixa}">
+                <th th:text="${caixa.id}"></th>
+                <th th:text="${caixa.dataFormatada}"></th>
+                <th th:text="${caixa.descricao}"></th>
+                <th th:text="${caixa.tipo}"></th>
+                <td>
+                    <a th:href="@{/caixa/edita(id=${caixa.id})}"
+                       class="btn btn-primary" title="Edita prato"><i class='bx bx-pencil'></i>
+                    </a>
+                    <a th:href="@{/caixa/exclui(id=${caixa.id})}"
+                       class="btn btn-danger" title="Exclui prato"
+                       onclick="if (!(confirm('Tem certeza que deseja excluir?'))) return false">
+                        <i class='bx bxs-trash' ></i>
+                    </a>
+                </td>
+                <th></th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</corpo>
+
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>

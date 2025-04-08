@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+  <!-- or -->
+  <link
+          rel="stylesheet"
+          href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+          rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Vollkorn+SC&display=swap"
+          rel="stylesheet" />
+          <link rel="stylesheet" th:href="@{/css/fonts.css}">
+          <link rel="stylesheet" th:href="@{/css/global.css}">
+          <link rel="stylesheet" th:href="@{/css/pesquisa.css}">
+          <link rel="stylesheet" th:href="@{/css/color.css}">
+
+  <title>Caixa</title>
+</head>
+<body>
+    <navbar>
+        <header>
+            <nav class="nav-bar" id="logo">
+                <div class="nav-logo">
+                    <img th:src="@{/img/caixa.png}" id="img-logo-nav">
+                    <h1>Caixa</h1>
+                </div>
+                <div class="nav-list">
+                    <ul>
+                        <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a></li>
+                        <li class="nav-item"><a th:href="@{/caixa/novo}" class="nav-link">Inserir <i class='bx bxs-cloud-upload'></i></a></li>
+                    </ul>
+                </div>
+                <div class="search-button">
+                    <a th:href="@{/caixa/novoLocaliza}" ><i class='bx bx-search-alt'></i></a>
+                </div>
+    
+                <div class="mobile-menu-icon">
+                    <button onclick="menuShow()"><i class='bx bx-menu' style='color:#ffffff'  ></i></button>
+                </div>
+            </nav>
+            <div class="mobile-menu">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link rld">Recarregar <i class='bx bx-recycle'></i></a></li>
+                    <li class="nav-item"><a th:href="@{/caixa/novo}" class="nav-link">Inserir <i class='bx bxs-cloud-upload'></i></a></li>
+                </ul>
+                <div class="search-button">
+                    <a th:href="@{/caixa/novoLocaliza}" ><i class='bx bx-search-alt'></i></a>
+                </div>
+            </div>
+        </header>
+    </navbar>
+
+<div class="pesquisar">
+  <h2>Localizar Transações</h2>
+  <form action="#" th:action="@{/caixa/localiza}" th:object="${localiza}" method="POST">
+  <label>Data inicial</label>
+  <input type="date" th:field="*{dataFormatadaInicial}" required/>
+  <br>
+  <br>
+  <label class="on">Data final</label>
+  <input type="date" class="on" th:field="*{dataFormatadaFinal}" required/>
+  <br>
+  <div class="bts">
+    <button type="submit" class="btoa"><span>Ver Extrato</span></button>
+    <button type="button" class="btoa" th:href="@{/caixa/}"><span>Cancelar</span></button>
+  </div>
+</div>
+</form>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

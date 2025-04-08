@@ -47,7 +47,7 @@ public class Caixa {
         return "R$" + df.format(valor);
     }
 
-    public String getTipoTexto(){
+    public String getTipoText(){
         return tipo== 0 ?"Saída":"Entrada";
     }
 
@@ -90,4 +90,5 @@ public class Caixa {
     public int getTipo() {
         return tipo;
     }
+
 }

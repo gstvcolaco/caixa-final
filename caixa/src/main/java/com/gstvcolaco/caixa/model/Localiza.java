@@ -1,12 +1,19 @@
 package com.gstvcolaco.caixa.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+@Entity
 public class Localiza {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private Date dataInicial = new Date();
     private Date dataFinal = new Date();
-    private boolean tipo;
 
     public String getDataFormatadaFinal(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -46,6 +53,14 @@ public class Localiza {
         return sdf.format(dataInicial);
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Date getDataInicial() {
         return dataInicial;
     }
@@ -62,15 +77,4 @@ public class Localiza {
         this.dataFinal = dataFinal;
     }
 
-    public boolean isTipo() {
-        return tipo;
-    }
-
-    public void setTipo(boolean tipo) {
-        this.tipo = tipo;
-    }
-
-    public boolean getTipo() {
-        return tipo;
-    }
 }
